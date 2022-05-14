@@ -14,7 +14,7 @@ translation_of: Web/Security/Same-origin_policy
 ---
 <div>{{QuickLinksWithSubpages("/ja/docs/Web/Security")}}</div>
 
-<p><span class="seoSummary"><strong>同一オリジンポリシー</strong>は重要なセキュリティの仕組みであり、ある{{Glossary("origin", "オリジン")}}によって読み込まれた文書やスクリプトが、他のオリジンにあるリソースにアクセスできる方法を制限するものです。制限するものです。</span></p>
+<p><span class="seoSummary"><strong>同一オリジンポリシー</strong>は重要なセキュリティの仕組みであり、ある{{Glossary("origin", "オリジン")}}によって読み込まれた文書やスクリプトが、他のオリジンにあるリソースにアクセスできる方法を制限するものです。</span></p>
 
 <p>これにより、悪意のある可能性のあるドキュメントを隔離し、起こりうる攻撃のベクターを減らすことができます。例えば、インターネット上の悪意のあるウェブサイトがブラウザー内で JS を実行して、 (ユーザーがサインインしている) サードパーティのウェブメールサービスや (公開 IP アドレスを持たないことで攻撃者の直接アクセスから保護されている) 企業のイントラネットからデータを読み取り、そのデータを攻撃者に中継することを防ぎます。</p>
 
@@ -97,7 +97,7 @@ translation_of: Web/Security/Same-origin_policy
 <pre class="brush: js notranslate">document.domain = "company.com";
 </pre>
 
-<p>このコードが実行された後、そのページは <code>http://company.com/dir/page.html</code> におけるオリジンの検査を通過できます (許可を明示するために <code>http://company.com/dir/page.html</code> が自身の <code>document.domain</code> を "<code>company.com</code>" に変更したと仮定します。詳しくは {{domxref("document.domain")}} を参照してください)。しかし、 <code>company.com</code> <code>が自身の</code><code>document.domain</code> を <code>othercompany.com</code> に変更することは<strong>できません</strong>。なぜなら <code>company.com</code> の上位ドメインではないためです。</p>
+<p>このコードが実行された後、そのページは <code>http://company.com/dir/page.html</code> におけるオリジンの検査を通過できます (許可を明示するために <code>http://company.com/dir/page.html</code> が自身の <code>document.domain</code> を "<code>company.com</code>" に変更したと仮定します。詳しくは {{domxref("document.domain")}} を参照してください)。しかし、 <code>company.com</code> が自身の <code>document.domain</code> を <code>othercompany.com</code> に変更することは<strong>できません</strong>。なぜなら <code>company.com</code> の上位ドメインではないためです。</p>
 
 <p>ブラウザーはポート番号を個別に検査します。 <code>document.domain</code> を呼び出すと、 <code>document.domain = document.domain</code> の場合も含め、ポート番号が <code>null</code> で上書きされます。従って、スクリプトの最初に <code>document.domain = "company.com"</code> を設定しただけでは、 <code>company.com:8080</code> と <code>company.com</code> とは互いにアクセス<strong>できません</strong>。双方のポートが <code>null</code> になるように、双方で設定しなければなりません。</p>
 
